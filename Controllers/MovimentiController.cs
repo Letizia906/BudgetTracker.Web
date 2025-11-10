@@ -23,7 +23,23 @@ namespace BudgetTracker.Web.Controllers
 
         public IActionResult Index()
         {
-            var movimenti = CaricaMovimenti();
+            var movimenti = CaricaMovimenti() ?? new List<Movimento>();
+
+            decimal totaleEntrate = 0m;
+            decimal totaleUscite = 0m;
+
+            if (movimenti.Any())
+            {
+                totaleEntrate = movimenti.Where(m => m.Entrata).Sum(m => m.Importo);
+                totaleUscite = movimenti.Where(m => !m.Entrata).Sum(m => m.Importo);
+            }
+
+            decimal saldoTotale = totaleEntrate - totaleUscite;
+
+            ViewBag.TotaleEntrate = totaleEntrate;
+            ViewBag.TotaleUscite = totaleUscite;
+            ViewBag.SaldoTotale = saldoTotale;
+
             return View(movimenti);
         }
 
