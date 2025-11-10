@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Movimenti>
+  <Movimento>
+    <Id>1</Id>
+    <Descrizione>bollette</Descrizione>
+    <Importo>50</Importo>
+    <Entrata>false</Entrata>
+    <Categoria>Utenze</Categoria>
+    <Tipo>no</Tipo>
+    <Note>no</Note>
+    <Data>2025-02-12</Data>
+  </Movimento>
+</Movimenti>

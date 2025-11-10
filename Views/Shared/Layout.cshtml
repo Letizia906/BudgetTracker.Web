@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - BudgetTracker</title>
+
+    <!-- Bootstrap CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom site CSS -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">BudgetTracker</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navMain">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Movimenti" asp-action="Index">Movimenti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Movimenti" asp-action="Create">Nuovo Movimento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Movimenti" asp-action="Converti">Converti Valuta</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        @RenderBody()
+    </div>
+
+    <footer class="bg-light text-muted py-3 mt-5 border-top">
+        <div class="container">
+            <div class="d-flex justify-content-between">
+                <small>&copy; 2025 - BudgetTracker</small>
+                <small>Letizia Latini - matricola 123750</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery (optional per validezza) & Bootstrap JS (CDN) -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

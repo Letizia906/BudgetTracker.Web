@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Converti Valuta";
+    var valute = ViewBag.Valute as Dictionary<string, string>;
+}
+
+<h2>Converti da Euro</h2>
+
+<div class="card card-hero">
+    <div class="card-body">
+        <form method="post" asp-action="Converti" class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Importo in Euro</label>
+                <input type="number" step="0.01" name="importo" class="form-control" value="1" required />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Valuta destinazione</label>
+
+                @if (valute != null && valute.Any())
+                {
+                    <select name="valuta" class="form-select" required>
+                        <option value="">-- Seleziona una valuta --</option>
+                        @foreach (var v in valute)
+                        {
+                            <option value="@v.Key">@v.Value — @v.Key</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <div class="alert alert-warning">
+                        ⚠️ Impossibile caricare la lista delle valute. Riprova più tardi.
+                    </div>
+                }
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Converti</button>
+                <a asp-action="Index" class="btn btn-secondary ms-2">Torna ai movimenti</a>
+            </div>
+        </form>
+
+        @if (ViewBag.Risultato != null)
+        {
+            <div class="alert alert-info mt-3">
+                @ViewBag.Risultato
+            </div>
+        }
+
+        @if (ViewBag.Errore != null)
+        {
+            <div class="alert alert-danger mt-3">
+                @ViewBag.Errore
+            </div>
+        }
+    </div>
+</div>
